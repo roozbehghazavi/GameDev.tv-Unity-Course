@@ -6,8 +6,11 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
     int level;
+    string password;
+    string[] passwords = { "affarin", "bashtani", "baladi", "namir" };
     enum Screen { MainMenu,Password,Win};
     Screen currentScreen;
+
     void OnUserInput(string str)
     {
         if (str == "menu")
@@ -18,19 +21,25 @@ public class Hacker : MonoBehaviour
         {
             RunMainMenu(str);
         }
+        else if (currentScreen == Screen.Password)
+        {
+            CheckPassword(str);
+        }
     }
 
-    private void RunMainMenu(string str)
+    void RunMainMenu(string str)
     {
         if (str == "1")
         {
             level = 1;
+            password = passwords[1];
             StartGame();
         }
 
         else if (str == "2")
         {
             level = 2;
+            password = passwords[2];
             StartGame();
         }
 
@@ -46,6 +55,7 @@ public class Hacker : MonoBehaviour
         }
     }
 
+
     void StartGame()
     {
         currentScreen = Screen.Password;
@@ -56,6 +66,7 @@ public class Hacker : MonoBehaviour
     void ShowMainMenu(string str)
     {
         currentScreen = Screen.MainMenu;
+        password = "";
         Terminal.ClearScreen();
         Terminal.WriteLine("Welcome " + str);
         Terminal.WriteLine("What would you like to hack into?");
@@ -63,6 +74,17 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("Press 2 for police station");
         Terminal.WriteLine("Enter your selection:");
         
+    }
+    void CheckPassword(string str)
+    {
+        if (str == password)
+        {
+            Terminal.WriteLine("Congrats! the password was correct");
+        }
+        else
+        {
+            Terminal.WriteLine("Please Try again!");
+        }
     }
     // Start is called before the first frame update
     void Start()
