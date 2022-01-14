@@ -7,12 +7,11 @@ public class Hacker : MonoBehaviour
 {
     int level;
     enum Screen { MainMenu,Password,Win};
-    Screen currentScreen = Screen.MainMenu;
+    Screen currentScreen;
     void OnUserInput(string str)
     {
         if (str == "menu")
         {
-            currentScreen = Screen.MainMenu;
             ShowMainMenu("Roozbeh");
         }
         else if (currentScreen == Screen.MainMenu)
@@ -56,6 +55,7 @@ public class Hacker : MonoBehaviour
 
     void ShowMainMenu(string str)
     {
+        currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
         Terminal.WriteLine("Welcome " + str);
         Terminal.WriteLine("What would you like to hack into?");
