@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e1705d0d79c8149920bfc1e937b827, type: 3}
+  m_Name: Intro-State
+  m_EditorClassIdentifier: 
+  StoryText: '
+
+    You''re Roozbeh! so if the prophecy is true, you are the chosen
+    undead!
+
+
+    Do you seek the lords of cinder?
+
+    1.Yes
+
+    2.No'
+  nextState:
+  - {fileID: 11400000, guid: eefd4121e897c684bb6d0268c8fabeb9, type: 2}
+  - {fileID: 0}

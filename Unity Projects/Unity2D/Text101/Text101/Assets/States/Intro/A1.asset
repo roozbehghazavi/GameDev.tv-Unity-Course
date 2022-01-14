@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e1705d0d79c8149920bfc1e937b827, type: 3}
+  m_Name: A1
+  m_EditorClassIdentifier: 
+  StoryText: '
+
+    Very well! you can find one of them right before the catacombs
+    of carthus.the name is Abyss Watcher.
+
+
+    1.Find Abyss Watcher
+
+    2.Refuse'
+  nextState:
+  - {fileID: 11400000, guid: 5f7160d55552cab439d6cd329a0d3605, type: 2}
+  - {fileID: 11400000, guid: b2b5b2dbf1fe6744d93406b8b20ad58c, type: 2}
