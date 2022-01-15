@@ -7,7 +7,8 @@ public class Hacker : MonoBehaviour
 {
     int level;
     string password;
-    string[] passwords = { "affarin", "bashtani", "baladi", "namir" };
+    string[] passwords1 = { "affarin", "bashtani", "baladi", "namir" };
+    string[] passwords2 = { "bemir", "befrest", "mmd", "asb" };
     enum Screen { MainMenu,Password,Win};
     Screen currentScreen;
 
@@ -29,19 +30,13 @@ public class Hacker : MonoBehaviour
 
     void RunMainMenu(string str)
     {
-        if (str == "1")
-        {
-            level = 1;
-            password = passwords[1];
-            StartGame();
-        }
+        bool isValidNumber = (str == "1" || str == "2");
 
-        else if (str == "2")
+        if(isValidNumber)
         {
-            level = 2;
-            password = passwords[2];
+            level = int.Parse(str);
             StartGame();
-        }
+        }    
 
         else if (str == "007")
         {
@@ -59,8 +54,24 @@ public class Hacker : MonoBehaviour
     void StartGame()
     {
         currentScreen = Screen.Password;
+        switch(level)
+        {
+            case 1:
+                var randomIndex = UnityEngine.Random.Range(0, passwords1.Length);
+                password = passwords1[randomIndex];
+                break;
+            case 2:
+                var randomIndex2 = UnityEngine.Random.Range(0, passwords2.Length);
+                password = passwords2[randomIndex2];
+                break;
+            default:
+                Debug.Log("Invalid case");
+                break;
+        }
+        Terminal.ClearScreen();
         Terminal.WriteLine("You have chosen level " + level);
-        Terminal.WriteLine("Please enter your passsword: ");
+        Terminal.WriteLine("enter your passsword: ");
+        Terminal.WriteLine("hint: " + password.Anagram());
     }
 
     void ShowMainMenu(string str)
@@ -79,13 +90,36 @@ public class Hacker : MonoBehaviour
     {
         if (str == password)
         {
-            Terminal.WriteLine("Congrats! the password was correct");
+            ShowWinMenu();
         }
         else
         {
             Terminal.WriteLine("Please Try again!");
         }
     }
+
+    void ShowWinMenu()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+
+    }
+
+    void ShowLevelReward()
+    {
+        Terminal.WriteLine("Congrats! the password was correct");
+        Terminal.WriteLine(@"
+      _____
+     |.---.|
+     ||___||
+     |+  .'| Roozbeh Ghazavi
+     | _ _ |
+     |_____/
+");
+        Terminal.WriteLine("Type 'menu' to return to the main menu");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
